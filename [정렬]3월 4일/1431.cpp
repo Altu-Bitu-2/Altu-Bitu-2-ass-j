@@ -3,7 +3,6 @@
 //
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
@@ -20,12 +19,12 @@ int sum_integer(string str){
 
 bool cmp(string a,string b){
     if(a.size()!=b.size()){ //1.길이가 다르면 증가하는 순서
-            return a.size()<b.size();
-        }
-        if(sum_integer(a)!= sum_integer(b)){ //2.(길이는 같고) 숫자 합이 증가하는 순서
-            return sum_integer(a)< sum_integer(b);
-        }
-        return a<b; //3.(길이,숫자합 모두 같고) 사전 순으로 증가하는 순서
+        return a.size()<b.size();
+    }
+    if(sum_integer(a)!= sum_integer(b)){ //2.(길이는 같고) 숫자 합이 증가하는 순서
+        return sum_integer(a)< sum_integer(b);
+    }
+    return a<b; //3.(길이,숫자합 모두 같고) 사전 순으로 증가하는 순서
 }
 
 int main() {
