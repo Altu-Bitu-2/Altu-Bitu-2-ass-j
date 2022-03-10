@@ -15,7 +15,7 @@ int main() {
 
         while (t--) {
             cin >> n;
-            vector<pair<int, int>> arr(n);//서류심사 성적, 면접 성적
+            vector<pair<int, int>> v(n);//서류심사 성적, 면접 성적
             for (int i = 0; i < n; i++) {
                 cin >> arr[i].first >> arr[i].second;
             }
