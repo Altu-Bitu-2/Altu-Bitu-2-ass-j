@@ -8,6 +8,8 @@
 
 #include <iostream>
 #define day 86400
+#define h_time 3600
+#define m_time 60
 
 using namespace std;
 
@@ -17,14 +19,14 @@ int main(){
     
     int h,m,s,q,t,c,curr;
     cin >> h >> m >> s;
-    curr = h*3600 + m*60 + s;
+    curr = h*h_time + m*m_time + s;
 
     cin>>q;
     
     for(int i=0; i<q; i++){
         cin>>t;
         if(t==3){
-            cout<<curr/3600<<' '<<(curr/60)%60<<' '<<curr%60<<'\n';
+            cout<<curr/h_time<<' '<<(curr/m_time)%m_time<<' '<<curr%m_time<<'\n';
         }
         else{
             cin>>c;
@@ -33,7 +35,7 @@ int main(){
             }
             else if(t==2){
                 curr=(curr-c)%day;
-                while(curr<0)
+                if(curr<0)
                     curr+=day;
             }
         }
