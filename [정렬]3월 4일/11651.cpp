@@ -23,8 +23,9 @@ int main() {
     //입력
     cin >> n;
 
-    vector<pair<int, int>> v(n);
-
+    typedef pair<int, int> ci;//pair<int,int> 를 ci로 정의
+    vector<ci> v(n);//vector<pair<int,int>> v(n);과 같은 표현
+    
     for (int i = 0; i < n; i++) {
         cin >> v[i].first >> v[i].second;
     }
