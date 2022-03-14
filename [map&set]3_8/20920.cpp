@@ -4,6 +4,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -32,11 +33,10 @@ int main() {
         cin >> word;
         if (word.length() < m)
             continue;
-        if (w.find(word) == w.end()) {//단어장에 없는 단어
-            w[word] = 0;
+        if (w.find(word)==w.end()) {
+            w[word]=0;
             mem.push_back(word);
         }
-        //단어장에 있는 단어
         w[word]++;
     }
     sort(mem.begin(), mem.end(), cmp);
