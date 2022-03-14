@@ -4,31 +4,27 @@
 
 #include <iostream>
 #include <set>
+#include <algorithm>
 
 using namespace std;
-
+/*
 int changeTime(string &s) {
     return 60 * stoi(s.substr(0, 2)) + stoi(s.substr(3, 2));
-}
+}*/
 
 int main() {
     string s, e, q, time, name;
-    int cnt = 0, start, end, quit, t;
+    int cnt = 0;
     cin >> s >> e >> q;
-    start = changeTime(s);
-    end = changeTime(e);
-    quit = changeTime(q);
 
     set<string> in;
     set<string> att;
 
 
-    while (!cin.eof()) {//입력이 없으면 종료
-        cin >> time >> name;
-        t = changeTime(time);
-        if (t <= start) {
+    while (cin >> time >> name) {//입력이 없으면 종료
+        if (time <= s) {
             in.insert(name);
-        } else if (t >= end && t <= quit) {
+        } else if (time >= e && time <= q) {
             if (in.find(name)!=in.end()) {
                 att.insert(name);
             }
