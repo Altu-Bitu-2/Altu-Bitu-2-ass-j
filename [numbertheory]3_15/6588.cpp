@@ -5,21 +5,21 @@
 #include <vector>
 
 using namespace std;
-const int MAX = 1e5;
-
-vector<int> prime(MAX + 1, 0);
+const int MAX = 1e6;
+vector<bool> isprime(MAX + 1, true);
 
 void findPrime() {
-    prime[0] = prime[1] = -1;
+    isprime[0] = isprime[1] = false; //0과1은 소수가 아니므로 false
     for (int i = 2; i * i <= MAX; i++) {
-        if (prime[i] == -1) {
+        if (!isprime[i]) { //i가 소수가 아니라면
             continue;
         }
+        //i가 소수라면, i의 배수를 순서대로 방문하기
         for (int j = i * i; j <= MAX; j += i) {
-            if (prime[i] == -1) {
+            //이미 표기된 수라면 넘어가기
+            if (!isprime[j])
                 continue;
-            }
-            prime[j] = -1;
+            isprime[j] = false;
         }
     }
 }
@@ -28,16 +28,19 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
+
     int n;
-    bool flag;
+
     findPrime();
 
-    while (n != 0) {
+    while (true) {
         cin >> n;
-        flag = false;
-        for (int i = n; i >= (n / 2); i--) {
-            if (prime[i] == 0 && prime[n - i] == 0 && prime[n - i] == 2) {
-                cout << n << " = " << n - i << " + " << i << '\n';
+        if (n == 0) break; //0이면 종료
+        bool flag = false;
+        //연산
+        for (int i = 3; i <= (n / 2); i++) {
+            if (isprime[i] == true && isprime[n - i] == true) {
+                cout << n << " = " << i << " + " << n - i << '\n';
                 flag = true;
                 break;
             }
@@ -47,5 +50,4 @@ int main() {
         }
     }
     return 0;
-
 }
