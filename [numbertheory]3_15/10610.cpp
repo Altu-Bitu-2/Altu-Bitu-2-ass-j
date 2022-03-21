@@ -7,17 +7,15 @@
 
 using namespace std;
 
+int sum = 0;
+bool flag = true;
+vector<int> v;
+
 bool cmp(char a, char b) {
     return a > b;
 }
 
-int main() {
-    string n;
-    int sum = 0;
-    bool flag = true;
-    vector<int> v;
-    cin >> n;
-
+int checkThirty(string n){
     for (int i = 0; i < n.length(); i++) {
         if (n[i] - '0' == 0) {
             flag = false;
@@ -32,6 +30,13 @@ int main() {
             cout << v[i];
         }
     } else cout << -1 << '\n';
+}
+
+int main() {
+    string n;
+    cin >> n;
+
+    checkThirty(n);
     return 0;
 }
 
